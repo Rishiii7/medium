@@ -3,7 +3,7 @@ import {Hono} from 'hono'
 const app = new Hono();
 
 
-app.post('signup' , (c) => {
+app.post('/signup' , (c) => {
     return c.json({
         message: "Welcome to singup page"
     });

@@ -1,6 +1,5 @@
 import { Hono } from 'hono'
-import user from './routes/user'
-import books from './routes/blog'
+import mainRouter from './routes/index';
 
 const app = new Hono()
 
@@ -8,7 +7,6 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.route('/user', user)
-app.route('/blog', books)
+app.route('/api/v1', mainRouter);
 
 export default app
