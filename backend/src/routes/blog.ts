@@ -1,4 +1,4 @@
-// books.ts
+// blog.ts
 import { Hono } from 'hono'
 
 const app = new Hono()
