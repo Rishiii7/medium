@@ -15,6 +15,12 @@ type Blog = {
     authorId : string;
 }
 
+type UpdateBody = {
+    id : string;
+    title : string;
+    content? : string;
+}
+
 type Variables = {
     // Add your variables here
     userId : string
@@ -102,11 +108,41 @@ app.post('/' , async (c) => {
     }
 });
 
-app.put('/', (c) => {
+app.put('/', async (c) => {
+
+    try {
+        const userId = c.get('userId');
+
+        const prisma =  new PrismaClient({
+            datasourceUrl : c.env.DATABASE_URL
+        }).$extends(withAccelerate());
+
+        const body : UpdateBody = await c.req.json();
+
+        const response = await prisma.blog.update({
+            where : {
+                id : body.id,
+                authorId : userId
+            }, 
+            data : {
+                title : body.title,
+                content : body?.content
+            }
+        });
+
+        return c.json({
+            message : 'Blog updated successfully',
+            data : response
+        });
+    } catch(err) {
+        console.error(err);
+        c.status(502);
+        return c.json({
+            message : 'Error updating blog',
+            error : err
+        });
+    }
     
-    return c.json({
-        message: "FROM blog PUT"
-    });
 });
 
 app.get('/:id', (c) => {
