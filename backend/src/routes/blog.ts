@@ -47,11 +47,11 @@ app.use(async (c, next) => {
         // if invalid, return 401
         // console.log(jwt);
         const token = jwt.split(' ')[1];
-        console.log(token);
+        // console.log(token);
 
         const payload = await verify(token, c.env.JWT_SECRET);
 
-        console.log(`payload returned is : ${typeof payload.userId}`);
+        // console.log(`payload returned is : ${typeof payload.userId}`);
 
         if( !payload ) {
             c.status(401);
@@ -145,17 +145,63 @@ app.put('/', async (c) => {
     
 });
 
-app.get('/:id', (c) => {
-    const id = c.req.param('id');
-    return c.json({
-        message: `FROM blog GET ${id}`  
-    });
+app.get('/bulk', async (c) => {
+    try {
+        const prisma = new PrismaClient({
+            datasourceUrl : c.env.DATABASE_URL
+        }).$extends(withAccelerate());
+
+        const response = await prisma.blog.findMany({});
+
+        return c.json({
+            message : 'Blogs fetched successfully',
+            data : response
+        });
+    } catch(err) {
+        console.error(err);
+        c.status(503);
+        return c.json({
+            message : 'Error fetching blogs',
+            });
+    }
 });
 
-app.get('/bulk', (c) => {
-    return c.json({
-        message : `got all the blogs`
-    });
+
+app.get('/:id', async (c) => {
+
+    try {
+        const id : string = c.req.param('id');
+
+        const prisma = new PrismaClient({
+            datasourceUrl : c.env.DATABASE_URL
+        }).$extends(withAccelerate());
+
+        const response = await prisma.blog.findUnique({
+            where : {
+                id : id
+            }
+        });
+
+        if( ! response ) {
+            c.status(404);
+            return c.json({
+                message : 'Blog not found',
+            });
+        }
+
+        return c.json({
+            message : 'Blog fetched successfully',
+            data : response
+        });
+    } catch (err) {
+        console.error(err);
+        c.status(503);
+        return c.json({
+            message : 'Error fetching blog',
+        });
+    }
 });
+
+
 
 export default app;
