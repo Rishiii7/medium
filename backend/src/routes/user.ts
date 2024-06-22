@@ -2,7 +2,7 @@ import {Hono} from 'hono'
 import { PrismaClient, } from '@prisma/client/edge';
 import { withAccelerate } from '@prisma/extension-accelerate';
 import { sign } from 'hono/jwt';
-
+// import {SingupType, SigninType} from '@cursedcoder07/common-app'
 
 type Variables = {
     prisma: string
@@ -40,7 +40,7 @@ app.post('/signup' ,async  (c) => {
     }).$extends(withAccelerate());
    
     try {
-        const body : User = await c.req.json();
+        const body  = await c.req.json();
         const response = await prisma.user.create({
             data : {
                 username : body.username,
@@ -74,13 +74,25 @@ app.post('/signup' ,async  (c) => {
 });
 
 app.post('/signin' , async (c) => {
-    console.log(c.env.DATABASE_URL)
+    // console.log(c.env.DATABASE_URL)
     const prisma = new PrismaClient({
         datasourceUrl : c.env.DATABASE_URL
     }).$extends(withAccelerate());
 
     try {
         const body : User = await c.req.json();
+
+        console.log(body);
+
+        // const {success} = SigninType.safeParse(body);
+        // console.log( `Success : ${success}`);
+        // if (!success) {
+        //     c.status(400);
+        //     return c.json({
+        //         message : 'Invalid Inputs',
+        //     });
+        // }
+
         const user = await prisma.user.findFirst({
             where : {
                 username : body.username,
