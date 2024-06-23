@@ -5,14 +5,14 @@ export const Singup = () => {
     return (
         <>
         <div className="w-full h-screen">
-            <div className="w-full h-screen text-white py-12 md:py-24 lg:py-32 bg-gradient-to-r from-gray-700 to-primary-foreground">
+            <div className="w-full h-screen text-white py-10 md:py-24 lg:py-10 bg-gradient-to-r from-gray-700 to-primary-foreground">
                 <div className="container px-4 md:px-6 text-primary-foreground">
                 <div className="max-w-2xl mx-auto space-y-6">
                     <h1 className="text-4xl text-center font-bold tracking-tight sm:text-5xl md:text-6xl">
-                    Stay Informed, Inspired, and Connected
+                        Stay Informed, Inspired, and Connected
                     </h1>
                     <p className="text-lg text-center md:text-xl">
-                    Sign up for our blog and get the latest insights, tips, and trends delivered straight to your inbox.
+                        Sign up for our blog and get the latest insights, tips, and trends delivered straight to your inbox.
                     </p>
                     <div className=" flex justify-center ">
                         <div className="p-10 bg-white rounded-xl m-8 ">
@@ -34,6 +34,12 @@ export const Singup = () => {
                                     Sign Up 
                                 </Button>
                             </form>
+                            <div className="text-center mt-2 text-black text-sm text-muted-foreground">
+                                Don't have an account?{" "}
+                                <a className="underline" href="#">
+                                    Sign In
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
