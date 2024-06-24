@@ -7,7 +7,7 @@ export const HomePageComponent = () => {
         <div className=" text-black flex flex-col min-h-[100dvh]">
         <main className="flex-1 ">
             {/* Upper section */}
-            <section className="bg-[#FAFAFA] py-12 md:py-20">
+            <section className="bg-[#d7d8d8] py-12 md:py-20">
             <div className="container">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4 ml-4 text-center">

@@ -1,9 +1,9 @@
 import { Content } from "../Constants/Content";
 
-export const TestComponent = () => {
+export const BlogPage = () => {
     return (
         <>
-        <div className="px-4 py-6 md:px-6 md:py-12 lg:py-16">
+            <div className="px-4 py-6 md:px-6 md:py-12 lg:py-16">
             <article className="prose prose-gray max-w-3xl mx-auto dark:prose-invert p-2 ">
                 <div className="space-y-2 not-prose">
                     <div>
@@ -15,7 +15,7 @@ export const TestComponent = () => {
                         <p className="text-gray-500 text-lg">Posted on June 24, 2024</p>
                     </div>
                 </div>
-                <div>
+                <div className="mt-4">
                     <figure className="lg:-mx-12 xl:-mx-20">
                         <img
                             src="/vite.svg"
@@ -29,7 +29,7 @@ export const TestComponent = () => {
                         </figcaption>
                     </figure>
                 </div>
-                <div>
+                <div className="mt-6 ">
                     {content(Content)}
                 </div>
                 <BlockQoute 
