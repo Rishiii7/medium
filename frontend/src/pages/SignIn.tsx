@@ -34,6 +34,7 @@ export const SignInComponent = () => {
 
                 if (response.status === 200) {
                     // console.log('Navigation triggered');
+                    localStorage.setItem('token', response.data.token);
                     navigate('/blog');
                 } else {
                     console.error('Unexpected response status:', response.status);

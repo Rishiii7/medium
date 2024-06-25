@@ -62,6 +62,7 @@ export const Singup = () => {
 
 
                 console.log(response.data.token);
+                localStorage.setItem('token', response.data.token);
                 navigate('/blog');
             } catch (err) {
                 console.error(err);
