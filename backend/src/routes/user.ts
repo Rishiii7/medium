@@ -2,7 +2,7 @@ import {Hono} from 'hono'
 import { PrismaClient, } from '@prisma/client/edge';
 import { withAccelerate } from '@prisma/extension-accelerate';
 import { sign } from 'hono/jwt';
-// import {SingupType, SigninType} from '@cursedcoder07/common-app'
+import { cors } from 'hono/cors';
 
 type Variables = {
     prisma: string

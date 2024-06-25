@@ -4,11 +4,13 @@ import { cors } from 'hono/cors';
 
 const app = new Hono();
 
-app.use(cors());
+app.use('/*', cors({
+  origin: '*',
+}));
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.options('/*', (c) => {
+  return c.text('', 204);
+});
 
 app.route('/api/v1', mainRouter);
 
