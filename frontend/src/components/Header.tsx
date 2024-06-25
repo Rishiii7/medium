@@ -11,7 +11,7 @@ export const HeaderComponent = () => {
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 className="h-6 w-6 text-black"
             >
@@ -50,7 +50,7 @@ export const HeaderComponent = () => {
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 className="h-5 w-5 text-gray-600"
             >

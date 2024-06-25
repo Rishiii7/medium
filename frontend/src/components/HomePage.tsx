@@ -1,5 +1,5 @@
 import { CardComponent } from "./Card"
-import { FooterComponent } from "./HomeFooter"
+
 
 export const HomePageComponent = () => {
     return (
@@ -44,8 +44,7 @@ export const HomePageComponent = () => {
                 <CardComponent ></CardComponent>
             </div>
             </section>
-        </main>
-        <FooterComponent />
+        </main> 
         </div>
         </>
     )
