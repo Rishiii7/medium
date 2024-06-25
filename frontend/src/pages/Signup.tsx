@@ -52,25 +52,6 @@ export const Singup = () => {
     const buttonHandler = () => {
         console.log("Button clicked");
 
-        // send request to backend
-        // useEffect( () => {
-            
-        //     const postUserData = async () => {
-        //         const response = await axios.post('http://localhost:8787/api/v1/user/signup', {
-        //             username: username,
-        //             password: password,
-        //             name: name
-        //         });
-
-        //         console.log(response);
-        //     };
-
-        //     postUserData();
-
-        // },  [username, 
-        //     password,
-        //     name]);
-
         const postUserData = async () => {
             try {
                 const response = await axios.post('http://localhost:8787/api/v1/user/signup', {
