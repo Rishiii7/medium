@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { InputField } from "../components/Input"
 import { useCallback, useState } from "react"
 import axios from "axios"
-import { Button} from "../components/Button"
+import { Button } from "../components/Button"
 
 type SigninInputType = {
     username : string;
@@ -19,20 +19,21 @@ export const SignInComponent = () => {
 
     const navigate = useNavigate();
 
-    const signinButtonHandler =  useCallback( async () => {
+    const signinButtonHandler = async() => {
             console.log('button clicked');
             // API call to signin
             try {
+                console.log(signinUser);
                 const response = await axios.post('http://localhost:8787/api/v1/user/signin', {
                     username: signinUser.username,
                     password: signinUser.password
                 });
     
-                console.log('API response status:', response.status);
-                console.log('API response data:', response.data);
+                // console.log('API response status:', response.status);
+                // console.log('API response data:', response.data);
 
                 if (response.status === 200) {
-                    console.log('Navigation triggered');
+                    // console.log('Navigation triggered');
                     navigate('/blog');
                 } else {
                     console.error('Unexpected response status:', response.status);
@@ -42,7 +43,22 @@ export const SignInComponent = () => {
                 alert("Error while logging In !! \n Try Once again");
             }
             console.log("hi there in signin button");
+    };
+
+    const handleEmailChange = useCallback( (e : React.FormEvent<HTMLInputElement>)=>{
+        setSigninUser({
+            ...signinUser,
+            username: e.currentTarget.value
+        });
     }, [signinUser]);
+
+    const handlePasswordChange = useCallback( (e : React.FormEvent<HTMLInputElement>)=>{
+        setSigninUser({
+            ...signinUser,
+            password: e.currentTarget.value
+        });
+    }, [signinUser]);
+    
 
     return (
         <>
@@ -56,22 +72,12 @@ export const SignInComponent = () => {
                 <form className="space-y-4">
                 <InputField type="email"
                     placeholder="johndoe@gmail.com"
-                    onchangeHandler={ (e : React.FormEvent<HTMLInputElement>) => {
-                        setSigninUser({
-                            ...signinUser,
-                            username : e.currentTarget.value
-                        });
-                    } }>
+                    onchangeHandler={ handleEmailChange }>
                         Email
                 </InputField>
                 <InputField type="password"
                     placeholder="*******"
-                    onchangeHandler={(e : React.FormEvent<HTMLInputElement>) => {
-                        setSigninUser({
-                            ...signinUser,
-                            password : e.currentTarget.value
-                        })
-                    }}>
+                    onchangeHandler={handlePasswordChange}>
                         Password
                 </InputField>
                 <Button

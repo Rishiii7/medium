@@ -81,6 +81,7 @@ export const Singup = () => {
 
 
                 console.log(response.data.token);
+                navigate('/blog');
             } catch (err) {
                 console.error(err);
             } 
@@ -90,7 +91,7 @@ export const Singup = () => {
         postUserData();
 
         // navigate to home page
-        navigate('/blog');
+        
     }   
 
     return (

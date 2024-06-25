@@ -10,9 +10,9 @@ export const HeaderComponent = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 className="h-6 w-6 text-black"
             >
                 <circle cx="12" cy="12" r="4"></circle>
@@ -49,9 +49,9 @@ export const HeaderComponent = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 className="h-5 w-5 text-gray-600"
             >
                 <circle cx="11" cy="11" r="8"></circle>
