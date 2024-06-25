@@ -1,24 +1,24 @@
 import z from 'zod';
 
-const singupInput = z.object({
+export const singupInput = z.object({
     username : z.string().email(),
     password : z.string(),
     name : z.string().optional()
 });
 
-const siginInput = z.object({
+export const siginInput = z.object({
     username : z.string().email(),
     password : z.string()
 });
 
 
-const createPostInput = z.object({
+export const createPostInput = z.object({
     title : z.string(),
     content : z.string(),
 });
 
 
-const updatePostInput = z.object({
+export const updatePostInput = z.object({
     title : z.string(),
     content : z.string().optional(),
 });
