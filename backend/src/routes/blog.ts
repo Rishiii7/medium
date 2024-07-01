@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { Hono } from 'hono'
 import { verify } from 'hono/jwt'
-
+import { CreatePostType, UpdatePostType } from '@cursedcoder07/common-app' 
 type Bindings = {
     DATABASE_URL : string
     JWT_SECRET : string
@@ -79,7 +79,7 @@ app.post('/' , async (c) => {
     try {
         const userId = c.get('userId');
 
-        const body : Blog = await c.req.json();
+        const body : CreatePostType = await c.req.json();
 
         const response = await prisma.blog.create({
             data : {
@@ -117,7 +117,7 @@ app.put('/', async (c) => {
             datasourceUrl : c.env.DATABASE_URL
         }).$extends(withAccelerate());
 
-        const body : UpdateBody = await c.req.json();
+        const body : UpdatePostType = await c.req.json();
 
         const response = await prisma.blog.update({
             where : {

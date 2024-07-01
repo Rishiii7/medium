@@ -19,6 +19,7 @@ export const createPostInput = z.object({
 
 
 export const updatePostInput = z.object({
+    id : z.string(),
     title : z.string(),
     content : z.string().optional(),
 });

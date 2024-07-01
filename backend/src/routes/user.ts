@@ -2,16 +2,11 @@ import {Hono} from 'hono'
 import { PrismaClient, } from '@prisma/client/edge';
 import { withAccelerate } from '@prisma/extension-accelerate';
 import { sign } from 'hono/jwt';
-import { cors } from 'hono/cors';
+
+import { SigninType, SingupType } from '@cursedcoder07/common-app';
 
 type Variables = {
     prisma: string
-}
-
-type User = {
-    username : string;
-    password : string;
-    name? :  string;
 }
 
 const app = new Hono<{ 
@@ -40,12 +35,12 @@ app.post('/signup' ,async  (c) => {
     }).$extends(withAccelerate());
    
     try {
-        const body  = await c.req.json();
+        const body: SingupType  = await c.req.json();
         const response = await prisma.user.create({
             data : {
                 username : body.username,
                 password : body.password,
-                name : body.name
+                name : body?.name
             }, 
         });
 
@@ -80,7 +75,7 @@ app.post('/signin' , async (c) => {
     }).$extends(withAccelerate());
 
     try {
-        const body : User = await c.req.json();
+        const body : SigninType = await c.req.json();
 
         console.log(body);
 

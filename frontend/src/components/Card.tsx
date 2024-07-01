@@ -1,14 +1,17 @@
+import { BackgroundGradient } from "./ui/DemoCard"
+
 export const CardComponent = () => {
     return (
         <>
-        <div className=" ml-2 rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
-            <div className="flex justify-center">
+        <BackgroundGradient>
+        <div className=" rounded-3xl border bg-slate-900 text-white text-card-foreground shadow-sm" data-v0-t="card">
+            <div className="flex justify-center rounded-lg p-2">
                 <img
                 src="/vite.svg"
                 width="400"
                 height="225"
                 alt="Article"
-                className="rounded-t-md object-fit h-48 w-48"
+                className="rounded-lg object-fit h-48 w-48"
                 />
             </div>
             
@@ -24,6 +27,8 @@ export const CardComponent = () => {
                 </div>
             </div>
         </div>
+        </BackgroundGradient>
+        
         </>
     )
 }
